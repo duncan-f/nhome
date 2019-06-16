@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block jumbotron %}
+{% if user.is_anonymous %}
+<div class="jumbotron">
+    <div class="container">
+        <h1 class="display-4">Welcome!</h1>
+        <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+        <hr class="my-4">
+        <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+        <a class="btn btn-primary btn-lg" href="{% url 'register' %}" role="button">Sign Up Now</a>
+    </div>
+</div>
+{% endif %}
+{% endblock jumbotron %}
+{% block content %}
+        <div class="col-md-8">
+            <h2>Homepage</h2>
+        </div>
+{% endblock content %}
+{% block sidebar %}
+    <aside class="col-md-4 blog-sidebar">
+        <div class="p-4">
+            <h4 class="font-italic">Recent Posts</h4>
+            <ol class="list-unstyled mb-0">
+            {% for post in posts %}
+            <li><a href="{% url 'posts:detail' post.slug %}">{{ post.title }}</a></li>
+            {% endfor %}
+            </ol>
+        </div>
+    
+        <div class="p-4">
+            <h4 class="font-italic">Elsewhere</h4>
+            <ol class="list-unstyled">
+            <li><a href="https://github.com/duncan-f" target="_blank">GitHub</a></li>
+            <li><a href="#" target="_blank">Twitter</a></li>
+            <li><a href="#" target="_blank">Facebook</a></li>
+            </ol>
+        </div>
+    </aside><!-- /.blog-sidebar -->
+{% endblock sidebar %}

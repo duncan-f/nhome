@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="col-md-8">
+    <h4 class="display-4">{{ post.title }}</h4>
+    <p><small>{{ post.author }}</small></p>
+    <p><a href="{% url 'posts:update' post.id %}">Update</a></p>
+    <p class="lead">{{ post.content }}</p>
+</div>
+{% endblock content %}
